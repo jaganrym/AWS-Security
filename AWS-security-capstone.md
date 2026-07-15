@@ -1,11 +1,11 @@
-# Capstone Project: Securing Stellar Life's AWS Landing Zone
+# Capstone Project: Securing JRT Learn's AWS Landing Zone
 
 ## Case Study Background
 
-**Stellar Life** is a fictional 150-person digital health & wellness company. Their flagship product is a subscription app + telehealth platform: users book virtual consultations, store health records, track fitness data, and pay via a Stripe-tokenized card flow (so raw PAN never touches AWS, but the environment is still PCI-*adjacent*).
+**JRT Learn** is a fictional 150-person digital health & wellness company. Their flagship product is a subscription app + telehealth platform: users book virtual consultations, store health records, track fitness data, and pay via a Stripe-tokenized card flow (so raw PAN never touches AWS, but the environment is still PCI-*adjacent*).
 
 **Why security matters right now (the narrative driving this project):**
-- Stellar Life just closed a Series B and signed its first enterprise wellness client, who is requiring a **SOC 2 Type II** report within 6 months.
+- JRT Learn just closed a Series B and signed its first enterprise wellness client, who is requiring a **SOC 2 Type II** report within 6 months.
 - Because they store telehealth records, they are in scope for **HIPAA** (PHI: patient names, diagnoses, appointment notes, video call metadata).
 - A close competitor had a public S3 bucket breach last quarter that leaked customer PII — the board has asked security to prove "that can't happen to us."
 - The engineering team ships fast (multiple deploys/day) and has historically had broad IAM permissions in a single AWS account. You've just finished migrating them to a multi-account **Landing Zone** (Control Tower or equivalent) and now own the security build-out.
@@ -54,7 +54,7 @@ Tasks:
 
 ## Phase 2 — Detective Controls (the "auditor walks in" layer)
 
-**Objective:** Every account emits logs to one place, and Stellar Life can answer "what happened and when" for any resource.
+**Objective:** Every account emits logs to one place, and JRT Learn can answer "what happened and when" for any resource.
 
 Tasks:
 - Confirm **organization-wide CloudTrail** is on, logging to the Log Archive account, with log file validation enabled.
