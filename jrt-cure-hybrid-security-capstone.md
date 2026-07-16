@@ -1,10 +1,8 @@
 # Capstone Project (Hybrid): Securing JRT Cure's AWS + Microsoft 365 / Entra ID / AVD Environment
 
-## Updated Case Study Background
+## Case Study Background
 
-Everything from the original case study still holds — JRT Cure is a 150-person telehealth company, PHI/PII in AWS Prod, SOC 2 deadline, HIPAA exposure, board-level nervousness after a competitor's S3 breach.
-
-**New layer:** JRT Cure runs its corporate identity and productivity stack on Microsoft 365, and just standardized on this hybrid model:
+JRT Cure is a 150-person telehealth company, PHI/PII in AWS Prod, SOC 2 deadline, HIPAA exposure, board-level nervousness after a competitor's S3 breach. JRT Cure runs its corporate identity and productivity stack on Microsoft 365
 
 - **Entra ID is the single Identity Provider (IdP)** for the whole company — employees, contractors, and clinicians authenticate once into Entra ID, which then federates into both M365 (Exchange Online, SharePoint, Teams) and AWS (via IAM Identity Center as a SAML service provider). There is no such thing as an "AWS-only" identity anymore.
 - **Microsoft 365** hosts internal comms (Teams), the intranet/knowledge base (SharePoint), and email (Exchange Online) — some of which touches PHI-adjacent content (e.g., a clinician emailing a colleague about a case, or a SharePoint site with de-identified patient volume reports).
@@ -12,11 +10,8 @@ Everything from the original case study still holds — JRT Cure is a 150-person
 
 **Why this matters for the story:** the board's real fear after the competitor breach wasn't just "an S3 bucket was public" — it was "we don't actually know who our identities are anymore across two clouds." This hybrid phase is about closing that gap: one IdP, one conditional access policy set, one place both AWS and Microsoft 365 logs get correlated.
 
-The AWS account structure, SCPs, GuardDuty/Security Hub/Config setup, networking, and data protection controls from the original project **do not change** — you're adding an identity and access layer in front of them, not rebuilding them.
 
----
-
-## Phase 1 (Revised) — Hybrid Identity Foundation
+## Phase 1 — Hybrid Identity Foundation
 
 **Objective:** Entra ID is the single source of truth for "who is this person and what should they be allowed to do," in both Microsoft 365 and AWS.
 
